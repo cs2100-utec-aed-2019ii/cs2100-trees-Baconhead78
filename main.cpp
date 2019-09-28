@@ -3,15 +3,21 @@
 int main()
 {
 	Tree<int>* arbol = new Tree<int>();
-	arbol->insertNode(10, arbol->getRoot());
-	arbol->insertNode(15, arbol->getRoot());
-	arbol->insertNode(5, arbol->getRoot());
-	arbol->insertNode(4, arbol->getRoot());
-	arbol->insertNode(6, arbol->getRoot());
-	arbol->insertNode(8, arbol->getRoot());
+	arbol->root = nullptr;
 
-	arbol->inOrder(arbol->getRoot());
+	arbol->insertNode(10, arbol->root);
+	std::cout << arbol->root;
 
+	arbol->insertNode(15, arbol->root);
+	arbol->insertNode(5, arbol->root);
+	arbol->insertNode(4, arbol->root);
+	arbol->insertNode(6, arbol->root);
+	arbol->insertNode(8, arbol->root);
+
+	arbol->inOrder(arbol->root);
+
+
+	return 0;
 
 }
 

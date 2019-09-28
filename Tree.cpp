@@ -11,13 +11,13 @@ void Tree<T>::insertNode(T key, Node<T>* node){
 
 	if(key < node->key){
 		if(node->left != nullptr)
-			insert(key, node->left);
+			insertNode(key, node->left);
 		else
 			node->left=new Node<T>(key);
 	}
 	else if(key >= node->key){
 		if(node->right != nullptr)
-			insert(key, node->right);
+			insertNode(key, node->right);
 		else
 			node->right=new Node<T>(key);
 	}
@@ -44,7 +44,7 @@ int Tree<T>::calculateHeight(Node<T>* root){
 }
 
 template <typename T>
-void destroyTree(Node<T>* root){
+void Tree<T>::deleteTree(Node<T>* root){
 	if(root != nullptr){
 		destroyTree(root->left);
 		destroyTree(root->right);
@@ -53,28 +53,28 @@ void destroyTree(Node<T>* root){
 }
 
 template <typename T>
-void inOrder(Node<T>* root){
+void Tree<T>::inOrder(Node<T>* root){
 	inOrder(root->left);
 	std::cout << root->key << " ";
 	inOrder(root->right);
 }
 
 template <typename T>
-void preOrder(Node<T>* root){
+void Tree<T>::preOrder(Node<T>* root){
 	std::cout << root->key << " ";
 	preOrder(root->left);
 	preOrder(root->right);
 }
 
 template <typename T>
-void postOrder(Node<T>* root){
+void Tree<T>::postOrder(Node<T>* root){
 	postOrder(root->left);
 	postOrder(root->right);
 	std::cout << root->key << " ";
 }
 
 template <typename T>
-void nextNode(std::vector<Node<T>*> list, Node<T>* root, T value){
+void Tree<T>::nextNode(std::vector<Node<T>*> list, Node<T>* root, T value){
 	// ver si la lista está vacia
 	if(list.size() == 0){
 		list.push_back(root);
@@ -107,7 +107,7 @@ void nextNode(std::vector<Node<T>*> list, Node<T>* root, T value){
 }
 
 template <typename T>
-bool isComplete(std::vector<Node<T>*> list, bool hojas, Node<T>* root){
+bool Tree<T>::isComplete(std::vector<Node<T>*> list, bool hojas, Node<T>* root){
 	if(list.size() == 0)
 		list.push_back(root);
 
